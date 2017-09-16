@@ -3,12 +3,12 @@ var path = require('path');
 var distPath = path.resolve(__dirname, 'dist');
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 
-var indexHtmlPath = path.join(__dirname,"src","index.html");
+var indexHtmlPath = path.join(__dirname,"index.html");
 
 module.exports = {
   devtool:"eval-source-map",
   // devtool:"source-map",
-  entry: './src/app.tsx',
+  entry: './src/components/app.tsx',
   output: {
     path: distPath,
     filename: 'bundle.js'
