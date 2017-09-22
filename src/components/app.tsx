@@ -13,6 +13,7 @@ import HeaderApp from "./Layout/HeaderApp";
 
 import '../../node_modules/semantic-ui-css/semantic.min.css';
 import "./app.css";
+<<<<<<< HEAD
 
 import routeElements, { RoutElement } from "./Layout/routeElements"
 
@@ -21,6 +22,9 @@ import AppBody from "./AppBody";
 import AppBodyWrapper from "./AppBodyWrapper";
 import { actionCreators } from "../actions/index";
 import actions from "../actions/actions";
+=======
+import Footer from "./Layout/Footer";
+>>>>>>> a85a3b623935748449cf4416d9004e584ecca835
 // import "D:\Anatoliy\VSCode\TypescriptProj\node_modules\semantic-ui-css\semantic.min.css";
 
 
@@ -48,6 +52,7 @@ interface AppState {
         return (
             <Grid >
                 <Grid.Row>
+<<<<<<< HEAD
                     <HeaderApp showSideMenu={showLeftSideBar => this.setState({ showLeftSideBar })} />
                 </Grid.Row>
                 <Grid.Row>
@@ -56,6 +61,38 @@ interface AppState {
 
                 <Grid.Row>
                     <Footer />
+=======
+                    <HeaderApp />
+                </Grid.Row>
+                <Grid.Row>
+                    <Sidebar.Pushable as={Segment}>
+                        <Sidebar as={Menu} animation='overlay' width='thin' visible={true} icon='labeled' vertical inverted>
+                            {/* <Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical inverted> */}
+                            <Menu.Item name='home'>
+                                <Icon name='home' />
+                                Home
+                              </Menu.Item>
+                            <Menu.Item name='gamepad'>
+                                <Icon name='gamepad' />
+                                Games
+                              </Menu.Item>
+                            <Menu.Item name='camera'>
+                                <Icon name='camera' />
+                                Channels
+                             </Menu.Item>
+                        </Sidebar>
+                        <Sidebar.Pusher>
+                            <Segment basic>
+                                <Header as='h3'>Application Content</Header>
+                                {/* <Image src='/assets/images/wireframe/paragraph.png' /> */}
+                            </Segment>
+                        </Sidebar.Pusher>
+                    </Sidebar.Pushable>
+                </Grid.Row>
+
+                <Grid.Row>
+                    <Footer/>
+>>>>>>> a85a3b623935748449cf4416d9004e584ecca835
                 </Grid.Row>
 
             </Grid>
