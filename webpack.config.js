@@ -8,7 +8,7 @@ var indexHtmlPath = path.join(__dirname,"index.html");
 module.exports = {
   devtool:"eval-source-map",
   // devtool:"source-map",
-  entry: './src/components/app.tsx',
+  entry: './src/index.tsx',
   output: {
     path: distPath,
     filename: 'bundle.js'

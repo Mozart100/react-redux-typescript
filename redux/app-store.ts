@@ -1,13 +1,20 @@
 import * as React from "react";
-import {applyMiddleware, createStore, Store} from "redux";
+import { applyMiddleware, createStore, Store } from "redux";
 import thunk from "redux-thunk";
-import {AppState} from "./app-state";
-import {composeWithDevTools} from "redux-devtools-extension";
+// import { AppState } from "./app-state";
+import { composeWithDevTools } from "redux-devtools-extension";
 import { widgetReducer } from "./reducers/widgetReducer";
+import rootReducer from "./reducers/index";
+import logger from 'redux-logger';
 
-const middlewars = applyMiddleware(thunk);
-const storeWithMiddlewars =composeWithDevTools(middlewars)(createStore);
-export const appStore =storeWithMiddlewars(widgetReducer);
+let finalCreateStore =
+//  compose(applyMiddleware(thunk,logger))(createStore);
+ composeWithDevTools(applyMiddleware(thunk,logger))(createStore);
+
+
+export default function configureStore(initialState = { user: { username: "", id: 1 } }) {
+    return finalCreateStore(rootReducer, initialState);
+}
 
 // export const appStore: Store<AppState> =
 // 	createStore(widgetReducer, applyMiddleware(thunk));

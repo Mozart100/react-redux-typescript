@@ -1,9 +1,10 @@
-import * as React from "react";
+import   * as React from "react";
 import { render } from "react-dom";
 
-import { Provider } from "react-redux";
-import { appStore } from "../../redux/app-store";
+import { Provider, connect } from "react-redux";
 import { Router, Route, browserHistory, IndexRoute, hashHistory, Link } from 'react-router';
+import { bindActionCreators } from "redux";
+//  import {sync  } from "react-router-redux";
 
 import { Segment, Sidebar, Menu, Header, Grid, Icon } from "semantic-ui-react";
 import Features from "./Features";
@@ -18,17 +19,10 @@ import routeElements, { RoutElement } from "./Layout/routeElements"
 import Footer from "./Layout/Footer";
 import AppBody from "./AppBody";
 import AppBodyWrapper from "./AppBodyWrapper";
+import { actionCreators } from "../actions/index";
+import actions from "../actions/actions";
 // import "D:\Anatoliy\VSCode\TypescriptProj\node_modules\semantic-ui-css\semantic.min.css";
 
-// import {  } from "react-router-redux";
-
-const App_Depricated = () => (
-    <div>
-        <h1>xLorem ipsum dolor sit amet consectetur aiocpisicing elit. Necessitatibus in eaque ioccta reicieniocs illum error sequi rem deserunt eligenioc beatae.</h1>
-        {this.props.children}
-        <Link to="Headers"><button>Headers</button></Link>
-    </div>
-);
 
 interface AppProps {
 
@@ -36,7 +30,7 @@ interface AppProps {
 interface AppState {
     showLeftSideBar: boolean;
 }
-export class App extends React.Component<any, AppState> {
+ class App extends React.Component<any, any> {
 
     constructor(props) {
         super(props)
@@ -49,8 +43,8 @@ export class App extends React.Component<any, AppState> {
 
     render() {
         const ioc = Object.assign({}, this.props, this.state);
-
         // console.log('toli | children = ',ioc);
+
         return (
             <Grid >
                 <Grid.Row>
@@ -78,10 +72,28 @@ export class App extends React.Component<any, AppState> {
     }
 }
 
-function registerRoutes(router: RoutElement, index: number) {
-    console.log('toli | 111');
-    return <Route path={router.path} component={router.component} key={index} />
+
+
+
+function mapStateToProps(state) {
+    console.log(state); // state
+    console.log(arguments[1]); // undefined
+    return state;
 }
+
+function mapDispatchToProps(dispatch) {
+    console.log('toli | 11111');
+    return {
+        actions: bindActionCreators(actions, dispatch)
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+// function registerRoutes(router: RoutElement, index: number) {
+//     console.log('toli | 111');
+//     return <Route path={router.path} component={router.component} key={index} />
+// }
 
 // render(
 //     <Provider store={appStore}>
@@ -92,16 +104,6 @@ function registerRoutes(router: RoutElement, index: number) {
 
 //-------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------
-render(
-    <Provider store={appStore}>
-        <Router history={browserHistory}>
-            <Route path="/" component={App}>
-                <IndexRoute component={Features} />
-                <Route path="Headers" component={HeaderApp} />
-                <Route path="settings" component={Settings} />
-            </Route>
-        </Router>
-    </Provider>, document.getElementById("root"));
 
 
 
