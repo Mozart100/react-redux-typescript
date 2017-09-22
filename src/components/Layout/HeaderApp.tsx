@@ -55,10 +55,7 @@ export default class HeaderApp extends React.Component<HeaderAppProps, HeaderApp
                     </Grid.Column>
                 </Grid.Row>
 
-<<<<<<< HEAD
-=======
-               
->>>>>>> a85a3b623935748449cf4416d9004e584ecca835
+
             </Grid>
         );
 
