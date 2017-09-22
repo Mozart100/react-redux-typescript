@@ -5,13 +5,14 @@ import { Provider } from "react-redux";
 import { appStore } from "../../redux/app-store";
 import { Router, Route, browserHistory, IndexRoute, hashHistory, Link } from 'react-router';
 
-import { Segment } from "semantic-ui-react";
+import { Segment, Sidebar, Menu, Header, Grid, Icon } from "semantic-ui-react";
 import Features from "./Features";
 import Settings from "./Settings";
 import HeaderApp from "./Layout/HeaderApp";
 
 import '../../node_modules/semantic-ui-css/semantic.min.css';
 import "./app.css";
+import Footer from "./Layout/Footer";
 // import "D:\Anatoliy\VSCode\TypescriptProj\node_modules\semantic-ui-css\semantic.min.css";
 
 // import {  } from "react-router-redux";
@@ -37,16 +38,51 @@ export class App extends React.Component {
 
     render() {
         return (
-            // <Segment>
-                <div className="no-border">
+            <Grid >
+                <Grid.Row>
                     <HeaderApp />
-                    {/* {this.props.children} */}
-                    {/* <Link to="Headers"><button>Headers</button></Link>
-                    <Link to="settings">Settings</Link> */}
-                    {/* <button onClick={this.navigateToFeature} > Feature </button> */}
-                </div>
-            // </Segment>
+                </Grid.Row>
+                <Grid.Row>
+                    <Sidebar.Pushable as={Segment}>
+                        <Sidebar as={Menu} animation='overlay' width='thin' visible={true} icon='labeled' vertical inverted>
+                            {/* <Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical inverted> */}
+                            <Menu.Item name='home'>
+                                <Icon name='home' />
+                                Home
+                              </Menu.Item>
+                            <Menu.Item name='gamepad'>
+                                <Icon name='gamepad' />
+                                Games
+                              </Menu.Item>
+                            <Menu.Item name='camera'>
+                                <Icon name='camera' />
+                                Channels
+                             </Menu.Item>
+                        </Sidebar>
+                        <Sidebar.Pusher>
+                            <Segment basic>
+                                <Header as='h3'>Application Content</Header>
+                                {/* <Image src='/assets/images/wireframe/paragraph.png' /> */}
+                            </Segment>
+                        </Sidebar.Pusher>
+                    </Sidebar.Pushable>
+                </Grid.Row>
+
+                <Grid.Row>
+                    <Footer/>
+                </Grid.Row>
+
+            </Grid>
         );
+        // <Segment>
+        // <div className="no-border">
+        //     <HeaderApp />
+        //         {this.props.children} 
+        //         <Link to="Headers"><button>Headers</button></Link>
+        //             <Link to="settings">Settings</Link> 
+        //  <button onClick={this.navigateToFeature} > Feature </button> 
+        // </div>
+        // </Segment>
     }
 }
 

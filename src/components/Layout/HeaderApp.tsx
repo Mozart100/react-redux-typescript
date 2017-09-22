@@ -31,17 +31,7 @@ export default class HeaderApp extends React.Component {
                     </Grid.Column>
                 </Grid.Row>
 
-                <Grid.Row>
-                    <Grid.Column>
-                        <h1>'/assets/images/wireframe/media-paragraph.png' </h1>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <h1>'/assets/images/wireframe/media-paragraph.png' </h1>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <h1>'/assets/images/wireframe/media-paragraph.png' </h1>
-                    </Grid.Column>
-                </Grid.Row>
+               
             </Grid>
         );
 
