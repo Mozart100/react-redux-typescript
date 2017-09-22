@@ -55,7 +55,6 @@ export default class HeaderApp extends React.Component<HeaderAppProps, HeaderApp
                     </Grid.Column>
                 </Grid.Row>
 
-
             </Grid>
         );
 
