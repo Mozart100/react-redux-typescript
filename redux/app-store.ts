@@ -6,14 +6,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers/index";
 import logger from 'redux-logger';
 
-let finalCreateStore =
-//  compose(applyMiddleware(thunk,logger))(createStore);
- composeWithDevTools(applyMiddleware(thunk,logger))(createStore);
+let finalCreateStore = composeWithDevTools(applyMiddleware(thunk,logger))(createStore);
 
 
-export default function configureStore(initialState = { user: { username: "", id: 1 } }) {
+export default function configureStore(initialState) {
     return finalCreateStore(rootReducer, initialState);
 }
 
+// AppState
 // export const appStore: Store<AppState> =
 // 	createStore(widgetReducer, applyMiddleware(thunk));

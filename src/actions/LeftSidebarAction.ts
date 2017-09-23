@@ -6,8 +6,8 @@ import { LeftSidebarStateEnum } from "../../redux/reducers/com-control-reducer";
 //     leftSidebarOnOff: (flag: boolean) => void;
 // }
 
-interface ReduxCallback {
-    type: string;
+interface ReduxCallback extends Action{
+    // type: string;
     // flag: boolean;
 }
 
@@ -18,7 +18,8 @@ export const leftSidebarOnOffCallbackAction = (flag: boolean): ReduxCallback => 
     // console.log('toli | leftSidebarOnOffCallbackAction xx type =',flag ? LeftSidebarStateEnum.leftSidebarOn.toString() : LeftSidebarStateEnum.leftSidebarOff.toString());
     return {
         // flag: flag,
-        type: flag ? "leftSidebarOn" : "leftSidebarOff"
+        type: flag ? LeftSidebarStateEnum.leftSidebarOn : LeftSidebarStateEnum.leftSidebarOff
+        // type: flag ? "leftSidebarOn" : "leftSidebarOff"
         // type: flag ? LeftSidebarStateEnum.leftSidebarOn.toString() : LeftSidebarStateEnum.leftSidebarOff.toString()
     };
 

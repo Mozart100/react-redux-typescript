@@ -1,25 +1,34 @@
-export enum LeftSidebarStateEnum
-{
-    leftSidebarOn,leftSidebarOff
+import AppStateRoot, { comControl } from "../app-state";
+
+export enum LeftSidebarStateEnum {
+    leftSidebarOn, leftSidebarOff
 }
 
-export default function comControlReducer(comControl = {}, action) {
+const initialiState:AppStateRoot = {
+    comControl: {
+        leftSidebarOnOffActionType: false
+    }
+};
 
-    console.log('toli | comControlReducer action.type',action.type);
+// export default function comControlReducer(appState: AppStateRoot = { comControl : {leftSidebarOnOffActionType : false} }, action) {
+export default function comControlReducer(appState: comControl = {leftSidebarOnOffActionType : false}, action) {
+
+    
+    console.log('toli | comControlReducer action.type', action.type);
     switch (action.type) {
 
-        case 'leftSidebarOn':
+        case LeftSidebarStateEnum.leftSidebarOn:
             console.log('toli | comControlReducer leftSidebarOn');
-            const on = Object.assign({}, comControl, { leftSidebarOnOffActionType: true });
+            const on = Object.assign({}, appState, { leftSidebarOnOffActionType: true });
             return on;
 
-        case 'leftSidebarOff':
+        case LeftSidebarStateEnum.leftSidebarOff:
             console.log('toli | comControlReducer leftSidebarOff');
-            const off = Object.assign({}, comControl, { leftSidebarOnOffActionType: false });
+            const off = Object.assign({}, appState, { leftSidebarOnOffActionType: false });
             return off;
 
         default:
             console.log('toli | default comControlReducer');
-            return comControl;
+            return appState;
     }
 }
