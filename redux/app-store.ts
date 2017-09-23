@@ -3,7 +3,6 @@ import { applyMiddleware, createStore, Store } from "redux";
 import thunk from "redux-thunk";
 // import { AppState } from "./app-state";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { widgetReducer } from "./reducers/widgetReducer";
 import rootReducer from "./reducers/index";
 import logger from 'redux-logger';
 

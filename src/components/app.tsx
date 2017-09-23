@@ -20,7 +20,7 @@ import Footer from "./Layout/Footer";
 import AppBody from "./AppBody";
 import AppBodyWrapper from "./AppBodyWrapper";
 import { actionCreators } from "../actions/index";
-import actions from "../actions/actions";
+// import actions from "../actions/actions";
 // import "D:\Anatoliy\VSCode\TypescriptProj\node_modules\semantic-ui-css\semantic.min.css";
 
 
@@ -76,7 +76,7 @@ interface AppState {
 
 
 function mapStateToProps(state) {
-    console.log(state); // state
+    console.log('toliy | state=',state); // state
     console.log(arguments[1]); // undefined
     return state;
 }
@@ -84,7 +84,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     console.log('toli | 11111');
     return {
-        actions: bindActionCreators(actions, dispatch)
+        actions: bindActionCreators(actionCreators, dispatch)
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
