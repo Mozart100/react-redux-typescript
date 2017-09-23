@@ -1,6 +1,6 @@
-import * as leftSidebarAction from "./LeftSidebarAction";
+import * as LeftSidebarAction from "./LeftSidebarAction";
 
 export  const  actionCreators = {
-    ...leftSidebarAction
+    ...LeftSidebarAction
 };
 

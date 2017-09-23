@@ -3,7 +3,10 @@ import { Segment, Sidebar, Menu, Icon } from "semantic-ui-react";
 import AppBody from "./AppBody";
 
 interface AppBodyWrapperProps {
-    showLeftSideBar: boolean;
+    // showLeftSideBar: boolean;
+    // leftSidebarOnOffActionType:(flag: boolean) => void
+    comControl: { leftSidebarOnOffActionType: boolean }
+
 }
 
 interface AppBodyWrapperState {
@@ -19,7 +22,8 @@ export default class AppBodyWrapper extends React.Component<AppBodyWrapperProps,
 
         return (
             <Sidebar.Pushable as={Segment}>
-                <Sidebar as={Menu} animation='push' width='thin' visible={this.props.showLeftSideBar} icon='labeled' vertical inverted>
+                <Sidebar as={Menu} animation='push' width='thin' visible={this.props.comControl.leftSidebarOnOffActionType} icon='labeled' vertical inverted>
+                {/* <Sidebar as={Menu} animation='push' width='thin' visible={this.props.showLeftSideBar} icon='labeled' vertical inverted> */}
                     <Menu.Item name='home' onClick={e => console.log('toli | ')}>
                         <Icon name='home' />
                         Home

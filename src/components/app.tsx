@@ -1,4 +1,4 @@
-import   * as React from "react";
+import * as React from "react";
 import { render } from "react-dom";
 
 import { Provider, connect } from "react-redux";
@@ -30,11 +30,12 @@ interface AppProps {
 interface AppState {
     showLeftSideBar: boolean;
 }
- class App extends React.Component<any, any> {
+
+class App extends React.Component<any, any> {
 
     constructor(props) {
         super(props)
-        this.state = { showLeftSideBar: false }
+        // this.state = { showLeftSideBar: false }
     }
 
     // private navigateToFeature =  () =>{
@@ -48,8 +49,10 @@ interface AppState {
         return (
             <Grid >
                 <Grid.Row>
-                    <HeaderApp showSideMenu={showLeftSideBar => this.setState({ showLeftSideBar })} />
+                    <HeaderApp {...ioc} />
+                    {/* <HeaderApp showSideMenu={showLeftSideBar => this.setState({ showLeftSideBar })} /> */}
                 </Grid.Row>
+                
                 <Grid.Row>
                     <AppBodyWrapper {...ioc} />
                 </Grid.Row>
@@ -76,18 +79,25 @@ interface AppState {
 
 
 function mapStateToProps(state) {
-    console.log('toliy | state=',state); // state
-    console.log(arguments[1]); // undefined
+    console.log('toliy | mapStateToProps state=', state); // state
+    // console.log(arguments[1]); // undefined
+
+    const mapper = {
+        leftSidebarOnOffCallbackAction : state.leftSidebarOnOffCallbackAction   
+    }
     return state;
 }
 
-function mapDispatchToProps(dispatch) {
-    console.log('toli | 11111');
-    return {
-        actions: bindActionCreators(actionCreators, dispatch)
-    };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// function mapDispatchToProps(dispatch) {
+//     const tmp = bindActionCreators(actionCreators, dispatch);
+//      console.log('toli | mapDispatchToProps tmp=',tmp);
+
+
+//     return {
+//         actions : bindActionCreators(actionCreators, dispatch)
+//     };
+// }
+export default connect(mapStateToProps, actionCreators)(App);
 
 
 // function registerRoutes(router: RoutElement, index: number) {

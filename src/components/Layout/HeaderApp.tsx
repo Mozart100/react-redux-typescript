@@ -2,7 +2,8 @@ import * as React from "react";
 import { Grid, Button, Segment, Header } from 'semantic-ui-react'
 
 interface HeaderAppProps {
-    showSideMenu: (isToShow: boolean) => void
+    showSideMenu: (isToShow: boolean) => void,
+    leftSidebarOnOffCallbackAction :(flag: boolean) => void
 }
 
 interface HeaderAppState {
@@ -20,7 +21,8 @@ export default class HeaderApp extends React.Component<HeaderAppProps, HeaderApp
     }
 
     private turnOnOffSidebar = (): void => {
-        this.props.showSideMenu( this.showSidebar = !this.showSidebar );
+        console.log('toli | turnOnOffSidebar leftSidebarOnOffCallbackAction =', this.props.leftSidebarOnOffCallbackAction);
+        this.props.leftSidebarOnOffCallbackAction( this.showSidebar = !this.showSidebar );
     }
 
     render() {
