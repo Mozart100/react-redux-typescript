@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Segment, Sidebar, Menu, Icon } from "semantic-ui-react";
-import AppBody from "./AppBody";
+import MainContent from "./MainContent";
+import { comControl } from "../../redux/app-state";
+import { Link } from "react-router";
 
 interface AppBodyWrapperProps {
-    // showLeftSideBar: boolean;
-    // leftSidebarOnOffActionType:(flag: boolean) => void
-    comControl: { leftSidebarOnOffActionType: boolean }
-
+    comControl: comControl
+    children: any
 }
 
 interface AppBodyWrapperState {
@@ -21,25 +21,25 @@ export default class AppBodyWrapper extends React.Component<AppBodyWrapperProps,
     render() {
 
         return (
-            <Sidebar.Pushable as={Segment}>
+            <Sidebar.Pushable as={Segment} basic>
                 <Sidebar as={Menu} animation='push' width='thin' visible={this.props.comControl.leftSidebarOnOffActionType} icon='labeled' vertical inverted>
-                {/* <Sidebar as={Menu} animation='push' width='thin' visible={this.props.showLeftSideBar} icon='labeled' vertical inverted> */}
-                    <Menu.Item name='home' onClick={e => console.log('toli | ')}>
+                    {/* <Sidebar as={Menu} animation='push' width='thin' visible={this.props.showLeftSideBar} icon='labeled' vertical inverted> */}
+                    <Menu.Item name='home' as={Link} to="/">
                         <Icon name='home' />
                         Home
-                              </Menu.Item>
-                    <Menu.Item name='gamepad'>
+                    </Menu.Item>
+                    <Menu.Item name='gamepad' as={Link} to="Features">
                         <Icon name='gamepad' />
-                        Games
+                        Features
                               </Menu.Item>
-                    <Menu.Item name='camera'>
+                    <Menu.Item name='camera' as={Link} to="Settings">
                         <Icon name='camera' />
-                        Channels
-                             </Menu.Item>
+                        Settings
+                    </Menu.Item>
                 </Sidebar>
                 <Sidebar.Pusher>
                     <Segment basic className="no-border">
-                        <AppBody />
+                        {this.props.children}
                     </Segment>
                 </Sidebar.Pusher>
             </Sidebar.Pushable>

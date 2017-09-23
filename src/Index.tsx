@@ -14,6 +14,7 @@ import App from "./components/app";
 import Features from "./components/Features";
 import HeaderApp from "./components/Layout/HeaderApp";
 import Settings from "./components/Settings";
+import MainContent from "./components/MainContent";
 
 
 
@@ -33,23 +34,23 @@ let store: Store<AppStateRoot> = configureStore(initialState);
 // export const appStore: Store<AppState> =
 
 
-render(
-    <Provider store={store}>
-        <App />
-    </Provider>, document.getElementById("root"));
+// render(
+//     <Provider store={store}>
+//         <App />
+//     </Provider>, document.getElementById("root"));
 
 // render(
 //     <Provider store={store}>
 //      <App/>
 //     </Provider>, document.getElementById("root"));
 
-// render(
-//     <Provider store={appStore}>
-//         <Router history={browserHistory}>
-//             <Route path="/" component={App}>
-//                 <IndexRoute component={Features} />
-//                 <Route path="Headers" component={HeaderApp} />
-//                 <Route path="settings" component={Settings} />
-//             </Route>
-//         </Router>
-//     </Provider>, document.getElementById("root"));
+render(
+    <Provider store={store}>
+        <Router history={browserHistory}>
+            <Route path="/" component={App}>
+                <IndexRoute component={MainContent} />
+                <Route path="Features" component={Features} />
+                <Route path="settings" component={Settings} />
+            </Route>
+        </Router>
+    </Provider>, document.getElementById("root"));

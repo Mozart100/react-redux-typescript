@@ -17,7 +17,7 @@ import "./app.css";
 import routeElements, { RoutElement } from "./Layout/routeElements"
 
 import Footer from "./Layout/Footer";
-import AppBody from "./AppBody";
+import MainContent from "./MainContent";
 import AppBodyWrapper from "./AppBodyWrapper";
 import { actionCreators } from "../actions/index";
 // import actions from "../actions/actions";
@@ -35,7 +35,6 @@ class App extends React.Component<any, any> {
 
     constructor(props) {
         super(props)
-        // this.state = { showLeftSideBar: false }
     }
 
     // private navigateToFeature =  () =>{
@@ -43,14 +42,12 @@ class App extends React.Component<any, any> {
     // }
 
     render() {
-        const ioc = Object.assign({}, this.props, this.state);
-        // console.log('toli | children = ',ioc);
+        const ioc = Object.assign({}, this.props);
 
         return (
             <Grid >
                 <Grid.Row>
                     <HeaderApp {...ioc} />
-                    {/* <HeaderApp showSideMenu={showLeftSideBar => this.setState({ showLeftSideBar })} /> */}
                 </Grid.Row>
                 
                 <Grid.Row>

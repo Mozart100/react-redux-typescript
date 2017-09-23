@@ -1,17 +1,17 @@
-import AppBody from "../AppBody";
+import MainContent from "../MainContent";
 
- export interface RoutElement {
+export interface RoutElement {
     name: string;
     component: any;
-    path:string;
+    path: string;
 };
 
 export const routeElements: RoutElement[] = [{
-    component: AppBody,
-    name: AppBody.name,
-path:"/"
+    component: MainContent,
+    name: MainContent.name,
+    path: "/"
 }]
 
- export default routeElements;
+export default routeElements;
 
 
