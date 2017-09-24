@@ -15,14 +15,12 @@ import Features from "./components/Features";
 import HeaderApp from "./components/Layout/HeaderApp";
 import Settings from "./components/Settings";
 import MainContent from "./components/MainContent";
+import People from "./components/people";
 
 
 
-let initialState = {
-    // user: {
-    //     username: 'ana',
-    //     id: 10
-    // },
+let initialState: AppStateRoot = {
+    people: [],
     comControl: {
         leftSidebarOnOffActionType: false
     }
@@ -51,6 +49,7 @@ render(
                 <IndexRoute component={MainContent} />
                 <Route path="Features" component={Features} />
                 <Route path="settings" component={Settings} />
+                <Route path="people" component={People} />
             </Route>
         </Router>
     </Provider>, document.getElementById("root"));

@@ -1,14 +1,13 @@
 import AppStateRoot, { comControl } from "../app-state";
+import { LeftSidebarStateEnum } from "../../src/actions/LeftSidebarAction";
 
-export enum LeftSidebarStateEnum {
-    leftSidebarOn, leftSidebarOff
-}
 
-const initialiState:AppStateRoot = {
-    comControl: {
-        leftSidebarOnOffActionType: false
-    }
-};
+
+// const initialiState:AppStateRoot = {
+//     comControl: {
+//         leftSidebarOnOffActionType: false
+//     }
+// };
 
 // export default function comControlReducer(appState: AppStateRoot = { comControl : {leftSidebarOnOffActionType : false} }, action) {
 export default function comControlReducer(appState: comControl = {leftSidebarOnOffActionType : false}, action) {

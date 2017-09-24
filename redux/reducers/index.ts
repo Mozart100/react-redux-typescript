@@ -1,10 +1,11 @@
 import {combineReducers} from 'redux';
-import userReducer from './UserReducer';
 import comControlReducer from "./com-control-reducer";
+import  personReducer from "./person-reducer";
 
 const rootReducer = combineReducers({
         // user:userReducer,
-        comControl :comControlReducer
+        comControl :comControlReducer,
+        people : personReducer
 });
 
 export default rootReducer;

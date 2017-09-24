@@ -1,10 +1,11 @@
 import { Action } from "redux";
-import { LeftSidebarStateEnum } from "../../redux/reducers/com-control-reducer";
 
 
+export enum LeftSidebarStateEnum {
+    leftSidebarOn, leftSidebarOff
+}
 export const leftSidebarOnOffCallbackAction = (flag: boolean): Action => {
     return {
         type: flag ? LeftSidebarStateEnum.leftSidebarOn : LeftSidebarStateEnum.leftSidebarOff
     };
-
 };

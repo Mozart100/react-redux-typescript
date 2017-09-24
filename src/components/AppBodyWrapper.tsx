@@ -36,6 +36,10 @@ export default class AppBodyWrapper extends React.Component<AppBodyWrapperProps,
                         <Icon name='camera' />
                         Settings
                     </Menu.Item>
+                    <Menu.Item name='people' as={Link} to="people">
+                        <Icon name='camera' />
+                        People
+                    </Menu.Item>
                 </Sidebar>
                 <Sidebar.Pusher>
                     <Segment basic className="no-border">

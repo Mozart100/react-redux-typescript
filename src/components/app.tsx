@@ -80,7 +80,8 @@ function mapStateToProps(state) {
     // console.log(arguments[1]); // undefined
 
     const mapper = {
-        leftSidebarOnOffCallbackAction : state.leftSidebarOnOffCallbackAction   
+        leftSidebarOnOffCallbackAction : state.leftSidebarOnOffCallbackAction ,
+        addPersonAction : state.addPersonAction   
     }
     return state;
 }
