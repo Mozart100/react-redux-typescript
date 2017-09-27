@@ -1,10 +1,10 @@
+require('dotenv').config();
 var path = require('path');
-
 var distPath = path.resolve(__dirname, 'dist');
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 var indexHtmlPath = path.join(__dirname,"index.html");
-
+var port = process.env.MY_PORT;
 module.exports = {
   devtool:"eval-source-map",
   // devtool:"source-map",
@@ -45,7 +45,7 @@ module.exports = {
     contentBase: distPath,
     inline:true, // without webpack iframe
     // compress: true,
-    port: 9000,
+    port: port,
     stats:{
       chunks: true,
       colors: true,
