@@ -25,7 +25,7 @@ export default class AppBodyWrapper extends React.Component<AppBodyWrapperProps,
         const propsWithChildren = this.props.children != null ? React.cloneElement(this.props.children, this.props) : this.props;
 
         return (
-            <Sidebar.Pushable as={Segment} basic>
+            <Sidebar.Pushable as={Segment} basic >
                 <Sidebar as={Menu} animation='push' width='thin' visible={this.props.comControl.leftSidebarOnOffActionType} icon='labeled' vertical inverted>
                     {/* <Sidebar as={Menu} animation='push' width='thin' visible={this.props.showLeftSideBar} icon='labeled' vertical inverted> */}
                     <Menu.Item name='home' as={Link} to="/">
@@ -51,7 +51,6 @@ export default class AppBodyWrapper extends React.Component<AppBodyWrapperProps,
                 </Sidebar>
                 <Sidebar.Pusher>
                     <Segment basic  className="no-border">
-                        {/* {this.props.children} */}
                         {propsWithChildren}
                     </Segment>
 
