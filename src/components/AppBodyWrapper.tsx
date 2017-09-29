@@ -48,9 +48,15 @@ export default class AppBodyWrapper extends React.Component<AppBodyWrapperProps,
                         <Icon name='address card' />
                         Register
                     </Menu.Item>
+
+                    <Menu.Item name='Personal Detail' as={Link} to="PersonPresenter/1">
+                        <Icon name='address card' />
+                        Personal Detail
+                    </Menu.Item>
+
                 </Sidebar>
                 <Sidebar.Pusher>
-                    <Segment basic  className="no-border">
+                    <Segment basic className="no-border">
                         {propsWithChildren}
                     </Segment>
 

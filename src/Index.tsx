@@ -17,6 +17,7 @@ import Settings from "./components/Settings";
 import MainContent from "./components/MainContent";
 import People from "./components/people";
 import { AddPerson } from "./components/AddPerson";
+import { PersonPresenter } from "./components/PersonPresenter";
 
 
 
@@ -39,6 +40,7 @@ render(
                 <Route path="settings" component={Settings} />
                 <Route path="people" component={People} />
                 <Route path="AddPerson" component={AddPerson} />
+                <Route path="PersonPresenter/:id" component={PersonPresenter} />
             </Route>
         </Router>
     </Provider>, document.getElementById("root"));
