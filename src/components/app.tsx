@@ -49,9 +49,17 @@ class App extends React.Component<any, any> {
                 <Grid.Row>
                     <HeaderApp {...ioc} />
                 </Grid.Row>
-                
-                <Grid.Row style={{'minHeight':'100vh'}}>
-                    <AppBodyWrapper {...ioc} />
+
+                <Grid.Row style={{ 'minHeight': '100vh' }}>
+                    <Grid columns={2} divided>
+                        <Grid.Column width={14} stretched>
+                            <AppBodyWrapper {...ioc} />
+                        </Grid.Column>
+
+                        <Grid.Column width={2} stretched>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur, eveniet. Possimus nesciunt deserunt, sit molestias odio harum ducimus, amet fugit unde mollitia minima quisquam omnis illum tempore suscipit placeat? Numquam recusandae minima veniam in ex hic temporibus aspernatur, voluptatem nam repellendus eius optio doloremque eum maxime, voluptate obcaecati laborum, asperiores quia non? Velit odio in atque suscipit illo perspiciatis, maiores officia omnis itaque dolore fuga molestias unde reprehenderit quaerat possimus repudiandae corporis. Omnis repudiandae, at nobis ex laudantium impedit odio quidem maiores debitis perferendis sapiente fugiat in exercitationem. Facilis aliquam blanditiis aliquid id vero quaerat quae cum et, quasi consectetur tenetur totam fugiat pariatur omnis beatae? Deleniti vel minima pariatur corrupti eaque deserunt aspernatur cupiditate sed. Voluptatum neque veniam ex ut nemo nam rem suscipit! Ducimus nobis dolorem laboriosam minus excepturi, ad sapiente eos soluta, eum voluptatibus nulla tempore commodi quia, ipsum ut sed eaque porro vero in facilis. Ex, consequatur cumque recusandae sunt aperiam, doloremque debitis dolorum asperiores obcaecati voluptatibus rem iure. Molestiae odit minima ipsa saepe deleniti cumque obcaecati numquam, dignissimos dolorum repudiandae, tenetur, quod officiis neque doloremque modi voluptates! Adipisci corporis tenetur vel repudiandae veniam iusto doloremque, est dicta beatae voluptas ullam nobis ducimus similique eligendi cupiditate impedit fugiat suscipit. Quae dignissimos consectetur, a impedit eius dolores sequi deleniti corporis praesentium amet labore animi exercitationem sint laboriosam quidem doloribus error esse dolore consequatur? Quia laboriosam quae exercitationem blanditiis minima quam fuga unde eaque distinctio autem porro, similique voluptas saepe doloribus. Omnis, minus quisquam consequuntur magni facilis quis ipsum officiis commodi architecto aliquam, ad nulla ratione quidem obcaecati nobis odit perferendis blanditiis unde? Suscipit doloribus, atque, cumque repellendus soluta quod nemo, voluptatum ullam eius vitae ipsa. Voluptatum, voluptas expedita ut cum nisi suscipit debitis libero officiis nesciunt! Voluptate corrupti voluptates deleniti, adipisci dicta iure ipsam autem vel in! </p> 
+                        </Grid.Column>
+                    </Grid>
                 </Grid.Row>
 
                 <Grid.Row>
@@ -80,8 +88,8 @@ function mapStateToProps(state) {
     // console.log(arguments[1]); // undefined
 
     const mapper = {
-        leftSidebarOnOffCallbackAction : state.leftSidebarOnOffCallbackAction ,
-        addPersonAction : state.addPersonAction   
+        leftSidebarOnOffCallbackAction: state.leftSidebarOnOffCallbackAction,
+        addPersonAction: state.addPersonAction
     }
     return state;
 }

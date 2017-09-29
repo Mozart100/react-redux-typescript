@@ -4,7 +4,6 @@ import { PersonStates, PersonAddingAction } from "../actions/person-actions";
 import { personAppState } from "../../redux/app-state";
 
 interface PeopleState {
-    // people: personAppState[]
 }
 
 interface PeopleProps {
@@ -31,7 +30,7 @@ export default class People extends React.Component<PeopleProps, PeopleState> {
 
     render() {
         return (
-            <Grid container  className="no-border" > 
+            <Grid container verticalAlign="middle"  className="no-border" > 
                 {/* style={{ 'width': '100%' }} */}
                 <Header textAlign="center" as="h1">This is my People</Header>
                 <Table celled>

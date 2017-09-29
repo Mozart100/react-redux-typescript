@@ -28,20 +28,7 @@ let initialState: AppStateRoot = {
 };
 
 let store: Store<AppStateRoot> = configureStore(initialState);
-// let store: Store<AppState> = configureStore(initialState);
-// AppState
-// export const appStore: Store<AppState> =
 
-
-// render(
-//     <Provider store={store}>
-//         <App />
-//     </Provider>, document.getElementById("root"));
-
-// render(
-//     <Provider store={store}>
-//      <App/>
-//     </Provider>, document.getElementById("root"));
 
 render(
     <Provider store={store}>
