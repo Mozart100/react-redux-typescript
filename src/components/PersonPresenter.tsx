@@ -1,20 +1,27 @@
 import * as React from "react";
 import { personAppState } from "../../redux/app-state";
+import { Item } from "semantic-ui-react";
+import * as _ from 'lodash';
 
 interface PersonPresenterProps {
   people: personAppState[];
-  params:any
+  params: any
 }
 
 interface PersonPresenterState {
-
+  person: personAppState
 }
 
 export class PersonPresenter extends React.Component<PersonPresenterProps, PersonPresenterState> {
   constructor(props) {
     super(props);
 
-    console.log('toli | PersonPresenter param', this.props.params.id);
+    console.log('toli | this.props.people.length = ', this.props.people.length);
+    const id: number = Number(this.props.params.id);
+    console.log('toli | PersonPresenter param', id);
+    const people = this.props.people;
+    const result = _.find(this.props.people, x => x.id === id);
+    this.state = { person: result !== undefined ? result : { id: -1, name: "", familyName: "" } }
   }
 
   //-------------------------------------------------------------------------------------------------------
@@ -23,7 +30,20 @@ export class PersonPresenter extends React.Component<PersonPresenterProps, Perso
   render() {
     return (
       <div>
-kuku
+        <Item.Group>
+          <Item>
+            <Item.Content>
+              <Item.Header as='a'>{this.state.person.name} - {this.state.person.familyName}</Item.Header>
+              <Item.Meta><strong>ID - </strong>{this.state.person.id}</Item.Meta>
+              <Item.Description>
+                {/* <Image src='/assets/images/wireframe/short-paragraph.png' /> */}
+              </Item.Description>
+              <Item.Extra>Additional Details</Item.Extra>
+            </Item.Content>
+          </Item>
+
+
+        </Item.Group>
       </div>
     );
   }
