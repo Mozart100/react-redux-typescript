@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Header, Segment, Button, Table, Label, Grid, Container } from "semantic-ui-react";
+import { Header, Segment, Button, Table, Label, Grid, Container, Icon } from "semantic-ui-react";
 import { PersonStates, PersonAddingAction } from "../actions/person-actions";
 import { personAppState } from "../../redux/app-state";
 
@@ -30,9 +30,14 @@ export default class People extends React.Component<PeopleProps, PeopleState> {
 
     render() {
         return (
-            <Grid container verticalAlign="middle"  className="no-border" > 
+            <Grid container verticalAlign="middle" className="no-border" >
                 {/* style={{ 'width': '100%' }} */}
-                <Header textAlign="center" as="h1">This is my People</Header>
+                <Header textAlign="center" style={{'margin':'0 10px'}}>
+                    <Icon name='users'  />
+                    <Header.Content>
+                        Friends
+                    </Header.Content>
+                </Header>
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
