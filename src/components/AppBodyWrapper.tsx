@@ -3,10 +3,12 @@ import { Segment, Sidebar, Menu, Icon } from "semantic-ui-react";
 import MainContent from "./MainContent";
 import { comControl } from "../../redux/app-state";
 import { Link } from "react-router";
+import { PersonAddingAction } from "../actions/person-actions";
 
 interface AppBodyWrapperProps {
     comControl: comControl
-    children: any
+    children: any,
+    addPersonAction:(id: number, name: string, familyName: string)=>PersonAddingAction;
 }
 
 interface AppBodyWrapperState {
@@ -19,6 +21,8 @@ export default class AppBodyWrapper extends React.Component<AppBodyWrapperProps,
     }
 
     render() {
+
+        const propsWithChildren = this.props.children != null ? React.cloneElement(this.props.children,this.props) : this.props;
 
         return (
             <Sidebar.Pushable as={Segment} basic>
@@ -40,10 +44,15 @@ export default class AppBodyWrapper extends React.Component<AppBodyWrapperProps,
                         <Icon name='camera' />
                         People
                     </Menu.Item>
+                    <Menu.Item name='AddPerson' as={Link} to="AddPerson">
+                        <Icon name='address card' />
+                        People
+                    </Menu.Item>
                 </Sidebar>
                 <Sidebar.Pusher>
                     <Segment basic className="no-border">
-                        {this.props.children}
+                        {/* {this.props.children} */}
+                        {propsWithChildren}
                     </Segment>
                 </Sidebar.Pusher>
             </Sidebar.Pushable>

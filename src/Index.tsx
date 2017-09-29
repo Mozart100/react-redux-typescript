@@ -16,6 +16,7 @@ import HeaderApp from "./components/Layout/HeaderApp";
 import Settings from "./components/Settings";
 import MainContent from "./components/MainContent";
 import People from "./components/people";
+import { AddPerson } from "./components/AddPerson";
 
 
 
@@ -50,6 +51,7 @@ render(
                 <Route path="Features" component={Features} />
                 <Route path="settings" component={Settings} />
                 <Route path="people" component={People} />
+                <Route path="AddPerson" component={AddPerson} />
             </Route>
         </Router>
     </Provider>, document.getElementById("root"));

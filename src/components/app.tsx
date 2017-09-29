@@ -50,7 +50,7 @@ class App extends React.Component<any, any> {
                     <HeaderApp {...ioc} />
                 </Grid.Row>
                 
-                <Grid.Row>
+                <Grid.Row style={{'minHeight':'100vh'}}>
                     <AppBodyWrapper {...ioc} />
                 </Grid.Row>
 
