@@ -16,11 +16,10 @@ export class PersonPresenter extends React.Component<PersonPresenterProps, Perso
   constructor(props) {
     super(props);
 
-    console.log('toli | this.props.people.length = ', this.props.people.length);
     const id: number = Number(this.props.params.id);
     console.log('toli | PersonPresenter param', id);
     const people = this.props.people;
-    const result = _.find(this.props.people, x => x.id === id);
+    const result = _.find(people, x => x.id === id);
     this.state = { person: result !== undefined ? result : { id: -1, name: "", familyName: "" } }
   }
 
