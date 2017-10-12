@@ -18,6 +18,7 @@ import MainContent from "./components/MainContent";
 import People from "./components/people";
 import { AddPerson } from "./components/AddPerson";
 import { PersonPresenter } from "./components/PersonPresenter";
+import { UserLoader } from "./components/LoadUsers";
 
 
 
@@ -41,6 +42,7 @@ render(
                 <Route path="people" component={People} />
                 <Route path="AddPerson" component={AddPerson} />
                 <Route path="PersonPresenter/:id" component={PersonPresenter} />
+                <Route path="LoadUsers" component={UserLoader} />
             </Route>
         </Router>
     </Provider>, document.getElementById("root"));

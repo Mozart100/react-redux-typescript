@@ -53,6 +53,10 @@ export default class AppBodyWrapper extends React.Component<AppBodyWrapperProps,
                         <Icon name='address card' />
                         Personal Detail
                     </Menu.Item>
+                    <Menu.Item name='Load Users' as={Link} to="LoadUsers">
+                        <Icon name='address card' />
+                        Load Users(Http)
+                    </Menu.Item>
 
                 </Sidebar>
                 <Sidebar.Pusher>
