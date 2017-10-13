@@ -3,6 +3,7 @@ import { Grid, Button, Table } from "semantic-ui-react";
 import { User } from "../Models/User";
 
 import axios from "axios";
+import AxiousInvoker from "../../infrastructure/httpInvoker";
 
 interface UserLoaderProps {
 
@@ -13,11 +14,20 @@ interface UserLoaderState {
 }
 
 export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState> {
+  private url: string;
+  private invoker: AxiousInvoker<User>;
+
+  //-------------------------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------------------------
 
   constructor(props) {
     super(props);
 
+    this.url = " https://jsonplaceholder.typicode.com/users";
     this.state = { users: [] };
+
+    let middlewareCallback: (users: User[]) => void = (users) => this.assignUsers(users);
+    this.invoker = new AxiousInvoker(this.url, this.assignUsers);
 
   }
 
@@ -25,32 +35,37 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
   //-------------------------------------------------------------------------------------------------------
 
   private loadUsers = (): void => {
-    const callback = this.assignToUsers;
-    axios.get('https://jsonplaceholder.typicode.com/users')
-      .then(function (response) {
+    this.invoker.getAxiouseRequestt();
 
-        callback(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
+  // private loadUsers = (): void => {
+  //   const callback = this.assignToUsers;
+  //   axios.get('https://jsonplaceholder.typicode.com/users')
+  //     .then(function (response) {
+
+  //       callback(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }
 
   //-------------------------------------------------------------------------------------------------------
 
-  private tmpMethod = (): void => {
-    console.log('toli | tmpMethod was invoked!');
-  }
-  private assignToUsers = (data: object[]): void => {
-    let users: User[] = [];
-
-    for (const item of data) {
-      users.push(item as User);
-    }
-
+  private assignUsers(users: User[]) {
     this.setState({ users });
-
   }
+
+  // private assignToUsers = (data: object[]): void => {
+  //   let users: User[] = [];
+
+  //   for (const item of data) {
+  //     users.push(item as User);
+  //   }
+
+  //   this.setState({ users });
+
+  // }
 
   //-------------------------------------------------------------------------------------------------------
   //-------------------------------------------------------------------------------------------------------
@@ -83,14 +98,14 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
   }
 
   //-------------------------------------------------------------------------------------------------------
-  
+
 
   private tableRaws = (user: User, index: number) => {
     return (<Table.Row key={index}>
-        <Table.Cell>{user.id}</Table.Cell>
-        <Table.Cell>{user.name}</Table.Cell>
-        <Table.Cell>{user.username}</Table.Cell>
-        <Table.Cell>{user.email}</Table.Cell>
+      <Table.Cell>{user.id}</Table.Cell>
+      <Table.Cell>{user.name}</Table.Cell>
+      <Table.Cell>{user.username}</Table.Cell>
+      <Table.Cell>{user.email}</Table.Cell>
     </Table.Row>);
-}
+  }
 }
