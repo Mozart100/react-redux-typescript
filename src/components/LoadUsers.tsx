@@ -23,11 +23,11 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
   constructor(props) {
     super(props);
 
-    this.url = " https://jsonplaceholder.typicode.com/users";
+    this.url = "https://jsonplaceholder.typicode.com/users";
     this.state = { users: [] };
 
     let middlewareCallback: (users: User[]) => void = (users) => this.assignUsers(users);
-    this.invoker = new AxiousInvoker(this.url, this.assignUsers);
+    this.invoker = new AxiousInvoker(this.url, middlewareCallback);
 
   }
 
