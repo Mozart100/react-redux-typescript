@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Grid, Button, Table } from "semantic-ui-react";
+import { Grid, Button, Table, Label, Form } from "semantic-ui-react";
 import { User } from "../Models/User";
 
 import axios from "axios";
@@ -26,8 +26,12 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
     this.url = "https://jsonplaceholder.typicode.com/users";
     this.state = { users: [] };
 
-    let middlewareCallback: (users: User[]) => void = (users) => this.assignUsers(users);
-    this.invoker = new AxiousInvoker(this.url, middlewareCallback);
+    const middlewareCallback: (users: User[]) => void = (users) => this.assignUsers(users);
+    const middlewareErrorCallback: (errorMsg: string) => void = (error) => this.printErrorMessage(error);
+
+
+
+    this.invoker = new AxiousInvoker(this.url, middlewareCallback, middlewareErrorCallback);
 
   }
 
@@ -35,7 +39,7 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
   //-------------------------------------------------------------------------------------------------------
 
   private loadUsers = (): void => {
-    this.invoker.getAxiouseRequestt();
+    this.invoker.getAxiouseRequest();
 
   }
   // private loadUsers = (): void => {
@@ -52,9 +56,17 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
 
   //-------------------------------------------------------------------------------------------------------
 
-  private assignUsers(users: User[]) {
+  private assignUsers(users: User[]): void {
     this.setState({ users });
   }
+
+  //-------------------------------------------------------------------------------------------------------
+
+  private printErrorMessage(message: string): void {
+    console.log('toli | errorMessage', message);
+  }
+
+
 
   // private assignToUsers = (data: object[]): void => {
   //   let users: User[] = [];
@@ -74,7 +86,12 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
     return (
       <Grid container>
         <Grid.Row verticalAlign="middle" textAlign="center">
-          Users:  <Button primary content="Load users" onClick={e => this.loadUsers()}></Button>
+          <Form>
+            <Form.Field inline>
+              <Label pointing='right'>Please press the following button</Label>
+              <Button primary content="Load users" onClick={e => this.loadUsers()}></Button>
+            </Form.Field>
+          </Form>
         </Grid.Row>
 
         <Grid.Row>
@@ -92,6 +109,11 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
               {this.state.users.map(this.tableRaws)}
             </Table.Body>
           </Table>
+        </Grid.Row>
+        <Grid.Row verticalAlign="top">
+          <Label>
+            Count = {this.state.users.length}
+          </Label>
         </Grid.Row>
       </Grid>
     );

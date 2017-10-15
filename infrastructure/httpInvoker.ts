@@ -8,30 +8,29 @@ import axios, { AxiosResponse } from "axios";
 
 
 type validCallbackDelegate<T> = (items: T[]) => void;
+type invalidCallbackDelegate = (message: string) => void;
 
 //-------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------
 
-export class ExperemntalInvoker<TObject> 
-{
-
-  constructor(private url:string) {
-    
-  }
-
-  //-------------------------------------------------------------------------------------------------------
-  //-------------------------------------------------------------------------------------------------------
-  
-  
-  
-}
 
 export default class AxiousInvoker<TObject>
 {
+  private invalidMoqCallback;
 
-  constructor(private url: string, private validCallback: validCallbackDelegate<TObject>) {
+  //-------------------------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------------------------
+
+
+  constructor(private url: string,
+    private validCallback: validCallbackDelegate<TObject>,
+    errorCallback?: invalidCallbackDelegate) {
+
+    const moqCallback: invalidCallbackDelegate = (msg: string) => { };
+    this.invalidMoqCallback = errorCallback || moqCallback;
+
   }
 
   //-------------------------------------------------------------------------------------------------------
@@ -48,12 +47,13 @@ export default class AxiousInvoker<TObject>
   // }
 
 
-  public getAxiouseRequestt = (): void => {
-    const innerCallback = this.convertData;
-    const outerCallback = this.validCallback;
+  public getAxiouseRequest = (): void => {
 
     axios.get(this.url)
-      .then((response: AxiosResponse) => { this.validCallback(this.convertData(response.data)) });
+      .then((response: AxiosResponse) => { this.validCallback( response.data as TObject [] ) })
+      .catch(error => this.invalidMoqCallback(error));
+      
+      // .then((response: AxiosResponse) => { this.validCallback(this.convertData(response.data)) });
   }
 
 
