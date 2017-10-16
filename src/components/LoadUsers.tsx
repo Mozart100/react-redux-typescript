@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Grid, Button, Table, Label, Form } from "semantic-ui-react";
+import { Grid, Button, Table, Label, Form, Search } from "semantic-ui-react";
 import { User } from "../Models/User";
+import * as _ from 'lodash';
 
 import axios from "axios";
 import AxiousInvoker from "../../infrastructure/httpInvoker";
@@ -10,7 +11,10 @@ interface UserLoaderProps {
 }
 
 interface UserLoaderState {
-  users: User[]
+  users: User[];
+  isLoading: boolean;
+  value: string;
+  results: User[]
 }
 
 export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState> {
@@ -24,16 +28,17 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
     super(props);
 
     this.url = "https://jsonplaceholder.typicode.com/users";
-    this.state = { users: [] };
+    this.state = { users: [], isLoading: false, value: "", results: [] };
 
     const middlewareCallback: (users: User[]) => void = (users) => this.assignUsers(users);
     const middlewareErrorCallback: (errorMsg: string) => void = (error) => this.printErrorMessage(error);
 
-
-
     this.invoker = new AxiousInvoker(this.url, middlewareCallback, middlewareErrorCallback);
 
   }
+
+
+
 
   //-------------------------------------------------------------------------------------------------------
   //-------------------------------------------------------------------------------------------------------
@@ -82,16 +87,55 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
   //-------------------------------------------------------------------------------------------------------
   //-------------------------------------------------------------------------------------------------------
 
+  resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
+  // handleResultSelect = (e, { result }) => console.log('toli | result has selected!');
+  handleResultSelect = (e, { result }) => this.setState({ value: result.name })
+
+  handleSearchChange = (e, { value }) => {
+    console.log('toli | value =', value);
+    this.setState({ isLoading: true, value })
+
+    
+    setTimeout(() => {
+      if (this.state.value.length < 1) return this.resetComponent()
+
+      console.log('toli | filter =', _.filter(this.state.users, x => _.includes(x.name, value)));
+      this.setState({
+        isLoading: false,
+        results: _.filter(this.state.users, x => _.includes(x.name, value)),
+      });
+
+    }, 500)
+  }
+
+
   render() {
+    const { isLoading, value, results } = this.state;
+
     return (
       <Grid container>
         <Grid.Row verticalAlign="middle" textAlign="center">
-          <Form>
-            <Form.Field inline>
-              <Label pointing='right'>Please press the following button</Label>
-              <Button primary content="Load users" onClick={e => this.loadUsers()}></Button>
-            </Form.Field>
-          </Form>
+          <Grid.Column width={5} floated="left" >
+            <Form>
+              <Form.Field inline>
+                <Label pointing='right'>Please press the following button</Label>
+                <Button primary content="Load users" onClick={e => this.loadUsers()}></Button>
+              </Form.Field>
+            </Form>
+          </Grid.Column>
+
+          <Grid.Column width={5} floated="right">
+            <Search loading={isLoading}
+              onResultSelect={this.handleResultSelect}
+              onSearchChange={this.handleSearchChange}
+              results={results}
+              value={value}
+              
+               {...this.state.results} 
+              
+              />
+
+          </Grid.Column>
         </Grid.Row>
 
         <Grid.Row>
