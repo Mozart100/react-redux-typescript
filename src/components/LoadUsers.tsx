@@ -14,7 +14,61 @@ interface UserLoaderState {
   users: User[];
   isLoading: boolean;
   value: string;
-  results: User[]
+  results: UserLoaderSearch[]
+}
+
+
+// const searchSemantic = {
+//   title: faker.company.companyName(),
+//   description: faker.company.catchPhrase(),
+//   image: faker.internet.avatar(),
+//   price: faker.finance.amount(0, 100, 2, '$'),
+// }))
+
+
+abstract class SemanticSearchBase<TObject>
+{
+    constructor(protected item:TObject)
+    {
+
+    }
+
+     toJs()
+     {
+       return {
+         title : this.title()
+       };
+     }
+
+
+    abstract  title ():string;
+    abstract  description ():string;
+    // {
+    //   return  { title : this.title };
+    // }
+
+
+    // description: faker.company.catchPhrase(),
+    //   image: faker.internet.avatar(),
+    //   price: faker.finance.amount(0, 100, 2, '$')
+}
+
+class UserLoaderSearch extends SemanticSearchBase<User>
+{
+  constructor(item: User)
+  {
+    super(item);
+  }
+  
+  description(): string {
+  return this.item.username;
+  }
+
+  title(): string {
+    return this.item.name;
+  }
+
+   
 }
 
 export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState> {
@@ -103,7 +157,8 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
       this.setState({
         isLoading: false,
         // results: _.filter(this.state.users, x => _.includes(x.name, value))
-        results: _.filter(this.state.users, x => _.includes(x.name, value)).map((x) => { return { title: x.name }}) as any,
+        results: _.filter(this.state.users, x => _.includes(x.name, value)).map((x) => new UserLoaderSearch(x).toJs()) as any,
+        // results: _.filter(this.state.users, x => _.includes(x.name, value)).map((x) => { return { title: x.name }}) as any,
       });
 
     }, 500)
