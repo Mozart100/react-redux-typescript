@@ -89,7 +89,7 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
 
   resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
   // handleResultSelect = (e, { result }) => console.log('toli | result has selected!');
-  handleResultSelect = (e, { result }) => this.setState({ value: result.name })
+  handleResultSelect = (e, { result }) => this.setState({ value: result.title })
 
   handleSearchChange = (e, { value }) => {
     console.log('toli | value =', value);
@@ -102,7 +102,8 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
       console.log('toli | filter =', _.filter(this.state.users, x => _.includes(x.name, value)));
       this.setState({
         isLoading: false,
-        results: _.filter(this.state.users, x => _.includes(x.name, value)),
+        // results: _.filter(this.state.users, x => _.includes(x.name, value))
+        results: _.filter(this.state.users, x => _.includes(x.name, value)).map((x) => { return { title: x.name }}) as any,
       });
 
     }, 500)
@@ -110,6 +111,7 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
 
 
   render() {
+    
     const { isLoading, value, results } = this.state;
 
     return (
@@ -131,7 +133,7 @@ export class UserLoader extends React.Component<UserLoaderProps, UserLoaderState
               results={results}
               value={value}
               
-               {...this.state.results} 
+               {...this.state.users} 
               
               />
 
