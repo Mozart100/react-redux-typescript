@@ -1,15 +1,15 @@
 // var webpackDevServer = require('webpack-dev-server');
 require('dotenv').config();
-var opn =require('opn');
-var chalk = require('chalk');
+let opn =require('opn');
+let chalk = require('chalk');
 
-var log = console.log;
-var port = process.env.MY_PORT;
-var url ="http://localhost:" + port +"/";
+let log = console.log;
+let port = process.env.MY_PORT;
+let url ="http://localhost:" + port +"/";
 
 
 log(chalk.green('devployment Started'));
-log(chalk.red('url = ',url ));
+log(chalk.green('url = ',url ));
 
 
 opn(url, { app: 'chrome', });
