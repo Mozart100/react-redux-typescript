@@ -57,6 +57,10 @@ export default class AppBodyWrapper extends React.Component<AppBodyWrapperProps,
                         <Icon name='address card' />
                         Load Users(Http)
                     </Menu.Item>
+                    <Menu.Item name='Test Promise' as={Link} to="TestPromise">
+                        <Icon name='heart' />
+                            Promise
+                    </Menu.Item>
 
                 </Sidebar>
                 <Sidebar.Pusher>

@@ -69,8 +69,6 @@ export default class AxiousInvoker<TObject>
     return users;
   }
 
-
-
 }
 
 function httpInvoker<T>(url: string): Promise<T[]> {

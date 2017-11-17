@@ -19,6 +19,7 @@ import People from "./components/people";
 import { AddPerson } from "./components/AddPerson";
 import { PersonPresenter } from "./components/PersonPresenter";
 import { UserLoader } from "./components/LoadUsers";
+import { TestPromise } from "./components/TestPromis";
 
 
 
@@ -43,6 +44,8 @@ render(
                 <Route path="AddPerson" component={AddPerson} />
                 <Route path="PersonPresenter/:id" component={PersonPresenter} />
                 <Route path="LoadUsers" component={UserLoader} />
+                <Route path="LoadUsers" component={UserLoader} />
+                <Route path="TestPromise" component={TestPromise} />
             </Route>
         </Router>
     </Provider>, document.getElementById("root"));
