@@ -20,6 +20,7 @@ import { AddPerson } from "./components/AddPerson";
 import { PersonPresenter } from "./components/PersonPresenter";
 import { UserLoader } from "./components/LoadUsers";
 import { TestPromise } from "./components/TestPromis";
+import { GridTricks } from "./components/GridTricks";
 
 
 
@@ -46,6 +47,7 @@ render(
                 <Route path="LoadUsers" component={UserLoader} />
                 <Route path="LoadUsers" component={UserLoader} />
                 <Route path="TestPromise" component={TestPromise} />
+                <Route path="GridTricks" component={GridTricks} />
             </Route>
         </Router>
     </Provider>, document.getElementById("root"));

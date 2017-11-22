@@ -61,6 +61,10 @@ export default class AppBodyWrapper extends React.Component<AppBodyWrapperProps,
                         <Icon name='heart' />
                             Promise
                     </Menu.Item>
+                    <Menu.Item name='Grid Tricks' as={Link} to="GridTricks">
+                        <Icon name='game' />
+                        Grid Tricks
+                    </Menu.Item>
 
                 </Sidebar>
                 <Sidebar.Pusher>

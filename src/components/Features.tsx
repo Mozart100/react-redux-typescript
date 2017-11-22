@@ -12,9 +12,9 @@ export default class Features extends React.Component {
                         </div>
                     </Grid.Column>
                     <Grid.Column width={5}>
-                        <div style={{ background: 'tranperent' }}>
+                        {/* <div style={{ background: 'tranperent' }}>
 
-                        </div>
+                        </div> */}
                     </Grid.Column>
                     <Grid.Column width={6}>
                         <div style={{ background: 'green' }}>
