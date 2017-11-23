@@ -15,21 +15,6 @@ const RectangleComp = props =>
     </div>
   )
 
-// class RectangleComp extends React.Component<{}, {}> {
-
-//   constructor(props) {
-//     super(props);
-
-//   }
-
-//   render() {
-//     return (
-//       <div style={{ height: "20px", width: "20px", background: "red" }}>
-//       </div>);
-//   }
-// }
-
-
 export class GridTricks extends React.Component<GridTricksProps, GridTricksState> {
 
   constructor(props) {
@@ -59,7 +44,9 @@ export class GridTricks extends React.Component<GridTricksProps, GridTricksState
   private createColumn = (column: number, index: number) => {
 
     const rectangle = column > 0 ? <RectangleComp /> : null;
-    return (<Grid.Column>
+
+    return (
+    <Grid.Column index={index}>
       {rectangle}
     </Grid.Column>)
   }
@@ -74,15 +61,28 @@ export class GridTricks extends React.Component<GridTricksProps, GridTricksState
 
   }
 
+  private createMtrx = (metrix: number[], index: number) => {
+    
+    return (
+      <Grid>
+        {/* {metrix.map(this.createRows)} */}
+      </Grid>
+      
+    );
+    // var list : any;
+    // for (;let x: number = 0; x < metrix.length; x++) {
+    //   this.createRows(metrix[x], index);
+    //     list.push(this.createRows(metrix[x], index))
+    // }
 
-  private createMtrx = (row: number[], index: number) => {
-
+    // return list;
   }
 
   render() {
     return (
       <Grid >
-        <Grid.Row columns={16}>
+        {this.state.positions.map(this.createMtrx)}
+        {/* <Grid.Row columns={16}>
           <Grid.Column>
             <RectangleComp />
           </Grid.Column>
@@ -103,7 +103,7 @@ export class GridTricks extends React.Component<GridTricksProps, GridTricksState
           <Grid.Column>
           </Grid.Column>
 
-        </Grid.Row>
+        </Grid.Row> */}
       </Grid>
     );
   }
